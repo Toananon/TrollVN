@@ -3,24 +3,52 @@
 
 <head>
 
-<title>System Alert</title>
+<title>SECURITY BREACH</title>
 
 <style>
 
 body{
-    background:black;
+
+    background-image:
+    linear-gradient(
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.75)
+    ),
+
+    url("hacker.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    color:lime;
+    font-family:Consolas;
+
+    overflow:hidden;
+    padding:20px;
+}
+
+#terminal{
+    white-space:pre-line;
+    font-size:22px;
+
+    text-shadow:
+    0 0 5px lime,
+    0 0 10px lime;
+}
+
+.warning{
+
     color:red;
+
+    font-size:45px;
+
     text-align:center;
-    margin-top:150px;
-    font-family:Arial;
-}
 
-h1{
-    font-size:50px;
-}
+    margin-top:40px;
 
-h2{
-    color:white;
+    text-shadow:
+    0 0 10px red,
+    0 0 20px red;
 }
 
 </style>
@@ -29,22 +57,55 @@ h2{
 
 <body>
 
-<h1>
-⚠ MÁY BẠN ĐÃ BỊ XÂM NHẬP ⚠
-</h1>
+<div id="terminal"></div>
 
-<h2 id="msg">
-Đang tải dữ liệu...
-</h2>
+<div class="warning" id="final"></div>
 
 <script>
 
-setTimeout(() => {
+const lines = [
 
-document.getElementById("msg").innerHTML =
-"😂 Bị troll rồi nha";
+"[SYSTEM] Initializing access...",
+"[SYSTEM] Scanning device...",
+"[SYSTEM] Accessing private files...",
+"[WARNING] Firewall bypassed",
+"[WARNING] Camera access granted",
+"[WARNING] Microphone access granted",
+"[SYSTEM] Downloading data...",
+"[SYSTEM] Encrypting files...",
+"[SYSTEM] Upload complete"
 
-}, 4000)
+];
+
+let i = 0;
+
+const terminal =
+document.getElementById("terminal");
+
+function typeLine(){
+
+    if(i < lines.length){
+
+        terminal.innerHTML +=
+        lines[i] + "\n";
+
+        i++;
+
+        setTimeout(typeLine, 1000);
+
+    }
+
+    else{
+
+        document.getElementById("final")
+        .innerHTML =
+        "😂 BỊ TROLL RỒI NHA 😂";
+
+    }
+
+}
+
+typeLine();
 
 </script>
 
